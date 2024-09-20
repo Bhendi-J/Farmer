@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Price Trends</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Market Price Trends of Crops Over the Years</h2>
+    <canvas id="myBarChart"></canvas>
+    <script>
+        const ctx = document.getElementById('myBarChart').getContext('2d');
+
+        const data = {
+            labels: ['Wheat', 'Corn', 'Soybean', 'Rice'],
+            datasets: [
+                {
+                    label: '2021',
+                    data: [5.0, 3.5, 4.2, 6.0],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: '2022',
+                    data: [5.5, 3.8, 4.5, 6.2],
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: '2023',
+                    data: [6.0, 4.0, 4.8, 6.5],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Price per Unit (in $)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Crops'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            }
+        };
+
+        const myBarChart = new Chart(ctx, config);
+    </script>
+</body>
+</html>
+
